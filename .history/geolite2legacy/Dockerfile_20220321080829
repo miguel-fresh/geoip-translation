@@ -10,3 +10,5 @@ RUN mkdir data/
 COPY *.zip *.py geoname2fips.csv ./
 
 ENTRYPOINT ["./geolite2legacy.py",  "-i", "GeoLite2-City-CSV_LIGHT.zip",  "-o", "/data/GeoLiteCity.dat",  "-f", "geoname2fips.csv"]
+
+

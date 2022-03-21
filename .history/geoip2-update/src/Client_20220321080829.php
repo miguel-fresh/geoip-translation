@@ -318,7 +318,7 @@ class Client
                 break;
             case self::ARCHIVE_ZIP:
                 $archive_file = $this->getArchiveFile($editionId);                
-                copy($archive_file, getcwd() . '/../data/' . 'GeoLite2-City-CSV.zip');
+                copy($archive_file, getcwd() . '/data/' . basename($archive_file));
                 // echo $archive_file;
                 // echo getcwd() . '/../data/' . $editionId . '.zip';
                 // $zip = new \ZipArchive;

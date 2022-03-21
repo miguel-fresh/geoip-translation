@@ -1,4 +1,4 @@
-FROM php:7.2-alpine3.8
+FROM php:7.2-alpine3.12
 
 RUN apk update
 RUN apk add bash
