@@ -183,6 +183,7 @@ class Client
             if (!empty($this->errorUpdateEditions[$editionId]))
                 return;
 
+            
             $this->extract($editionId);
             if (!empty($this->errorUpdateEditions[$editionId]))
                 return;
@@ -316,11 +317,14 @@ class Client
                 $phar->extractTo($this->dir, null, true);
                 break;
             case self::ARCHIVE_ZIP:
-
-                $zip = new \ZipArchive;
-                $zip->open($this->getArchiveFile($editionId));
-                $zip->extractTo($this->dir);
-                $zip->close();
+                $archive_file = $this->getArchiveFile($editionId);                
+                copy($archive_file, getcwd() . '/data/' . basename($archive_file));
+                // echo $archive_file;
+                // echo getcwd() . '/../data/' . $editionId . '.zip';
+                // $zip = new \ZipArchive;
+                // $zip->open($archive_file);
+                // $zip->extractTo($this->dir);
+                // $zip->close();
                 break;
         }
 
