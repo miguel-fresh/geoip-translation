@@ -1,0 +1,15 @@
+# Relative to where the script is run
+paths:
+  output: 
+
+
+on_start:
+  download_zip: false
+  convert_format: true
+
+
+
+
+  
+
+  

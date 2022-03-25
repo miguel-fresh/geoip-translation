@@ -1,9 +1,0 @@
-FROM php:7.2-alpine3.8
-
-RUN apk update
-RUN apk add bash
-RUN apk add curl
-
-# INSTALL COMPOSER
-RUN curl -s https://getcomposer.org/installer | php
-RUN alias composer='php composer.phar'

@@ -1,0 +1,19 @@
+# Relative to where the script is run from
+paths:
+  output: ./output # .dat destiny
+  data: ./data # .zip location
+
+names:
+  zip: GeoLite2-City-CSV.zip
+  dat: GeoLiteCity.dat
+
+on_start:
+  download_zip: false
+  convert_format: true
+
+
+
+
+  
+
+  
