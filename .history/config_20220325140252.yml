@@ -8,7 +8,7 @@ names:
   dat: GeoLiteCity.dat
 
 on_start:
-  download_zip: false
+  download_zip: true
   convert_to_dat: true
 
 max_mind:

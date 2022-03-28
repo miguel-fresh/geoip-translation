@@ -8,8 +8,8 @@ names:
   dat: GeoLiteCity.dat
 
 on_start:
-  download_zip: false
-  convert_to_dat: true
+  download_zip: true
+  convert_to_dat: false
 
 max_mind:
   license-key: Q9GJxPt4CsbixHRF
