@@ -1,7 +1,7 @@
 # Relative to where the script is located
 paths:
   output: ../output # .dat destiny
-  data: ../LightWeightZip # .zip location
+  data: ../zip # .zip location
 
 names:
   zip: GeoLite2-City-CSV.zip
@@ -9,7 +9,7 @@ names:
 
 on_start:
   download_zip: no
-  convert_to_dat: yes
+  convert_to_dat: false
 
 max_mind:
   license-key: Q9GJxPt4CsbixHRF
