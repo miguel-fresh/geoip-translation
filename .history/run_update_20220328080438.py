@@ -14,7 +14,7 @@ def removeFileIfExists(file_path):
 
 def checkExistence(path_to_check):
     if not path.exists(path_to_check):
-        raise(Exception(f"No existe la ruta \'{path_to_check}\'"))
+        raise(Exception("No existe la ruta"))
     return True
 
 
@@ -63,9 +63,6 @@ try:
 except:
     print('No config.yml file found, using default values...')
 
-if (not ONSTART_CONVERT and not ONSTART_DOWNLOAD):
-    exit(0)
-
 # Setting paths
 DOWNLOAD_ABSPATH = CURRENT_DIR.joinpath(DOWNLOAD_DIRNAME)
 OUTPUT_ABSPATH = CURRENT_DIR.joinpath(OUTPUT_DIRNAME)
@@ -73,8 +70,7 @@ OUTPUT_ABSPATH = CURRENT_DIR.joinpath(OUTPUT_DIRNAME)
 ZIP_ABSPATH = DOWNLOAD_ABSPATH.joinpath(ZIP_LEGACY_NAME)
 DAT_ABSPATH = OUTPUT_ABSPATH.joinpath(DAT_NAME)
 
-
-for abs_path in [DOWNLOAD_ABSPATH, OUTPUT_ABSPATH]:
+for abs_path in [DOWNLOAD_ABSPATH, OUTPUT_ABSPATH, ZIP_ABSPATH, DAT_ABSPATH]:
     checkExistence(abs_path)
 
 
@@ -92,8 +88,6 @@ if ONSTART_DOWNLOAD:
     # Rename zip if necessary
     if (ZIP_LEGACY_NAME != ZIP_NAME):
         rename(ZIP_ABSPATH, DOWNLOAD_ABSPATH.joinpath(ZIP_NAME))
-
-checkExistence(ZIP_ABSPATH)
 
 # Convert format
 if ONSTART_CONVERT:

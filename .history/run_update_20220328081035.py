@@ -93,8 +93,6 @@ if ONSTART_DOWNLOAD:
     if (ZIP_LEGACY_NAME != ZIP_NAME):
         rename(ZIP_ABSPATH, DOWNLOAD_ABSPATH.joinpath(ZIP_NAME))
 
-checkExistence(ZIP_ABSPATH)
-
 # Convert format
 if ONSTART_CONVERT:
     # python geolite2legacy.py -i GeoLite2-City-CSV.zip -o GeoLiteCity.dat -f geoname2fips.csv

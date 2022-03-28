@@ -1,0 +1,21 @@
+# Relative to where the script is located
+paths:
+  output: ../output # .dat destiny
+  data: ../zip # .zip location
+
+names:
+  zip: GeoLite2-City-CSV.zip
+  dat: GeoLiteCity.dat
+
+on_start:
+  download_zip: false
+  convert_to_dat: false
+
+max_mind:
+  license-key: Q9GJxPt4CsbixHRF
+  edition: GeoLite2-City-CSV
+
+
+  
+
+  

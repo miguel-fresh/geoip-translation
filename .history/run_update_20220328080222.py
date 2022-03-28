@@ -11,12 +11,10 @@ def removeFileIfExists(file_path):
     if path.exists(file_path):
         remove(file_path)
 
-
 def checkExistence(path_to_check):
     if not path.exists(path_to_check):
-        raise(Exception(f"No existe la ruta \'{path_to_check}\'"))
+        raise(Exception(f'No existe la ruta "{path_to_check}"'))
     return True
-
 
 # LEGACY
 ZIP_LEGACY_NAME = 'GeoLite2-City-CSV.zip'
@@ -48,7 +46,7 @@ try:
         names = documents['names']
         on_start = documents['on_start']
         max_mind = documents['max_mind']
-
+        
         OUTPUT_DIRNAME = paths['output']
         DOWNLOAD_DIRNAME = paths['data']
 
@@ -63,9 +61,6 @@ try:
 except:
     print('No config.yml file found, using default values...')
 
-if (not ONSTART_CONVERT and not ONSTART_DOWNLOAD):
-    exit(0)
-
 # Setting paths
 DOWNLOAD_ABSPATH = CURRENT_DIR.joinpath(DOWNLOAD_DIRNAME)
 OUTPUT_ABSPATH = CURRENT_DIR.joinpath(OUTPUT_DIRNAME)
@@ -73,9 +68,9 @@ OUTPUT_ABSPATH = CURRENT_DIR.joinpath(OUTPUT_DIRNAME)
 ZIP_ABSPATH = DOWNLOAD_ABSPATH.joinpath(ZIP_LEGACY_NAME)
 DAT_ABSPATH = OUTPUT_ABSPATH.joinpath(DAT_NAME)
 
-
-for abs_path in [DOWNLOAD_ABSPATH, OUTPUT_ABSPATH]:
+for abs_path in [DOWNLOAD_ABSPATH, OUTPUT_ABSPATH, ZIP_ABSPATH, DAT_ABSPATH]:
     checkExistence(abs_path)
+
 
 
 if ONSTART_DOWNLOAD:
@@ -83,17 +78,15 @@ if ONSTART_DOWNLOAD:
 
     print(f'Downloading {ZIP_LEGACY_NAME}...')
     # Download .zip
-    download_output = subprocess.run(['php', 'download.php',
-                                      '--license-key', LICENSE_KEY,
-                                      '--output-path', DOWNLOAD_ABSPATH,
-                                      '--edition', DB_EDITION],
-                                     cwd=CURRENT_DIR.joinpath('./geoip2-update'), stderr=STDOUT)
+    download_output = subprocess.run(['php', 'download.php', 
+        '--license-key', LICENSE_KEY,
+        '--output-path', DOWNLOAD_ABSPATH,
+        '--edition', DB_EDITION],
+        cwd=CURRENT_DIR.joinpath('./geoip2-update'), stderr=STDOUT)
 
     # Rename zip if necessary
     if (ZIP_LEGACY_NAME != ZIP_NAME):
         rename(ZIP_ABSPATH, DOWNLOAD_ABSPATH.joinpath(ZIP_NAME))
-
-checkExistence(ZIP_ABSPATH)
 
 # Convert format
 if ONSTART_CONVERT:

@@ -74,7 +74,7 @@ ZIP_ABSPATH = DOWNLOAD_ABSPATH.joinpath(ZIP_LEGACY_NAME)
 DAT_ABSPATH = OUTPUT_ABSPATH.joinpath(DAT_NAME)
 
 
-for abs_path in [DOWNLOAD_ABSPATH, OUTPUT_ABSPATH]:
+for abs_path in [DOWNLOAD_ABSPATH, ZIP_ABSPATH]:
     checkExistence(abs_path)
 
 
@@ -92,8 +92,6 @@ if ONSTART_DOWNLOAD:
     # Rename zip if necessary
     if (ZIP_LEGACY_NAME != ZIP_NAME):
         rename(ZIP_ABSPATH, DOWNLOAD_ABSPATH.joinpath(ZIP_NAME))
-
-checkExistence(ZIP_ABSPATH)
 
 # Convert format
 if ONSTART_CONVERT:
