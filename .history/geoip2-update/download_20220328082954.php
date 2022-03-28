@@ -40,6 +40,5 @@ $client = new \tronovav\GeoIP2Update\Client(array(
 
 $success = $client->run();
 if ($success !== 0) {
-    print_r($success);    
-    exit(1);
+    return 1;
 }

@@ -85,12 +85,11 @@ ZIP_ABSPATH = DOWNLOAD_ABSPATH.joinpath(ZIP_LEGACY_NAME)
 DAT_ABSPATH = OUTPUT_ABSPATH.joinpath(DAT_NAME)
 
 
-# Download .zip 
+
 if ONSTART_DOWNLOAD:
     # Check if download folder exists
     checkExistence(DOWNLOAD_ABSPATH)
-
-    # Remove previous .zip file if exists
+    
     removeFileIfExists(ZIP_ABSPATH)
 
     print(good_msg(f'Descargando {ZIP_LEGACY_NAME}...'))
@@ -101,14 +100,12 @@ if ONSTART_DOWNLOAD:
                                       '--edition', DB_EDITION],
                                      cwd=CURRENT_DIR.joinpath('./geoip2-update'), stderr=STDOUT)
 
-    # Rename .zip if necessary
+    # Rename zip if necessary
     if (ZIP_LEGACY_NAME != ZIP_NAME):
         rename(ZIP_ABSPATH, DOWNLOAD_ABSPATH.joinpath(ZIP_NAME))
 
-    # Check if download was successful
     if (download_output.returncode != 0):
         raise(Exception(bad_msg('Error en la descarga :(')))
-
     checkExistence(ZIP_ABSPATH)
     print(good_msg(f'Descarga exitosa :) -> {ZIP_ABSPATH}'))
 
@@ -128,8 +125,4 @@ if ONSTART_CONVERT:
                                     '-f', 'geoname2fips.csv'],
                                    cwd='./geolite2legacy')
 
-    # Check convertion was successful
-    if update_output.returncode != 0:
-        raise(Exception(bad_msg('Error en la conversión de formato :(')))
-    print(good_msg(f'Conversión existosa :) -> {DAT_ABSPATH}'))
 

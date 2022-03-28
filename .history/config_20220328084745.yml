@@ -8,11 +8,12 @@ names:
   dat: GeoLiteCity.dat
 
 on_start:
-  download_zip: true
+  download_zip: false
   convert_to_dat: false
 
 max_mind:
   license-key: Q9GJxPt4CsbixHRF
+  edition: GeoLite2-City-CSV
 
 
   

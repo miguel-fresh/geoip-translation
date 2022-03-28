@@ -107,7 +107,7 @@ class Client
     public function run()
     {
         if (!$this->validate()) {
-            return $this->errors;
+            return;
         }
 
         foreach ($this->editions as $editionId)

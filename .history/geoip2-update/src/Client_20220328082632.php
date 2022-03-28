@@ -107,16 +107,15 @@ class Client
     public function run()
     {
         if (!$this->validate()) {
-            return $this->errors;
+            return;
         }
 
         foreach ($this->editions as $editionId)
             $this->updateEdition($editionId);
-            
-        if (count($this->errorUpdateEditions) > 0) {
-            return $this->errorUpdateEditions;
+        if (count($this->errors) > 0) {
+            return false;
         }
-        return 0;
+        return true;
     }
 
     protected function setConfParams(&$params)

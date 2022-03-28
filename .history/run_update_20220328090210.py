@@ -129,7 +129,4 @@ if ONSTART_CONVERT:
                                    cwd='./geolite2legacy')
 
     # Check convertion was successful
-    if update_output.returncode != 0:
-        raise(Exception(bad_msg('Error en la conversión de formato :(')))
-    print(good_msg(f'Conversión existosa :) -> {DAT_ABSPATH}'))
 

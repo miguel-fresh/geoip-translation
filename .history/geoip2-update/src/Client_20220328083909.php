@@ -114,6 +114,8 @@ class Client
             $this->updateEdition($editionId);
             
         if (count($this->errorUpdateEditions) > 0) {
+            var_dump('ERROR AQUI');
+            var_dump($this->errorUpdateEditions);
             return $this->errorUpdateEditions;
         }
         return 0;

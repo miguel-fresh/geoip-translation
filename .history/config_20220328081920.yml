@@ -12,7 +12,8 @@ on_start:
   convert_to_dat: false
 
 max_mind:
-  license-key: Q9GJxPt4CsbixHRF
+  license-key: Q9GJxPt4CsbiHRF
+  edition: GeoLite2-City-CSV
 
 
   
