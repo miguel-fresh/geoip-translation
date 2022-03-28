@@ -1,0 +1,21 @@
+# Relative to where the script is located
+paths:
+  relative_to: cwd # Possible values: cwd, script (default) 
+  output: output # .dat destiny
+  data: LightWeightZip # .zip location
+
+names:
+  zip: GeoLite2-City-CSV.zip
+  dat: GeoLiteCity.dat
+
+on_start:
+  download_zip: no
+  convert_to_dat: yes
+
+max_mind:
+  license-key: Q9GJxPt4CsbixHRF
+
+
+  
+
+  
