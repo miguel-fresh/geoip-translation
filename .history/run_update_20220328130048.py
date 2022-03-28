@@ -76,6 +76,7 @@ try:
 
         else:
             max_mind = documents['max_mind']
+            print(max_mind)
 
             DB_EDITION = max_mind['edition'] if 'edition' in max_mind else DB_EDITION
             if ('license-key' in max_mind):
@@ -88,6 +89,7 @@ try:
 except Exception as e:
     print(neutral_msg(
         'No se encontró un archivo config.yml válido, usando valores por defecto...'))
+    print(e)
 
 if (not ONSTART_CONVERT and not ONSTART_DOWNLOAD):
     print(good_msg(

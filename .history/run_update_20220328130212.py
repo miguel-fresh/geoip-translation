@@ -76,6 +76,7 @@ try:
 
         else:
             max_mind = documents['max_mind']
+            print(max_mind)
 
             DB_EDITION = max_mind['edition'] if 'edition' in max_mind else DB_EDITION
             if ('license-key' in max_mind):

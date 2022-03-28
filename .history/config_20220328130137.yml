@@ -1,7 +1,7 @@
 # Relative to where the script is located
 paths:
   output: ../output # .dat destiny
-  data: ../zip # .zip location
+  data: ../LightWeightZip # .zip location
 
 names:
   zip: GeoLite2-City-CSV.zip

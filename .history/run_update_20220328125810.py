@@ -1,7 +1,6 @@
 from asyncio.subprocess import STDOUT
 from fileinput import filename
 from genericpath import exists
-from pydoc import doc
 import subprocess
 from pathlib import Path
 from os import remove, rename, path
@@ -70,13 +69,14 @@ try:
         ONSTART_DOWNLOAD = on_start['download_zip']
         ONSTART_CONVERT = on_start['convert_to_dat']
 
-        if (not ('max_mind' in documents) or documents['max_mind'] is None):
+        if (not ('max_mind' in documents)):
             if (ONSTART_DOWNLOAD):
                 print(bad_msg('No se han especificado opciones para MaxMind :('))
 
         else:
             max_mind = documents['max_mind']
-
+            print(max_mind)
+            
             DB_EDITION = max_mind['edition'] if 'edition' in max_mind else DB_EDITION
             if ('license-key' in max_mind):
                 LICENSE_KEY = max_mind['license-key']
