@@ -38,8 +38,7 @@ $client = new \tronovav\GeoIP2Update\Client(array(
     'editions' => array($options['edition']),
 ));
 
-$success = $client->run();
-if ($success !== 0) {
-    print_r($success);    
-    exit(1);
+$client->run();
+if (count($client->errorUpdateEditions) !== 0) {
+
 }

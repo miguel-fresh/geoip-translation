@@ -68,8 +68,8 @@ try:
         ONSTART_CONVERT = on_start['convert_to_dat']
 
         LICENSE_KEY = max_mind['license-key']
-        
-        DB_EDITION = max_mind['edition'] if 'edition' in max_mind else DB_EDITION 
+        print(max_mind.has_key('edition'))
+        DB_EDITION = max_mind['edition'] if max_mind.has_key('edition') else DB_EDITION 
 except:
     print(neutral_msg('No se encontró un archivo config.yml válido, usando valores por defecto...'))
 
@@ -85,12 +85,11 @@ ZIP_ABSPATH = DOWNLOAD_ABSPATH.joinpath(ZIP_LEGACY_NAME)
 DAT_ABSPATH = OUTPUT_ABSPATH.joinpath(DAT_NAME)
 
 
-# Download .zip 
-if ONSTART_DOWNLOAD:
-    # Check if download folder exists
-    checkExistence(DOWNLOAD_ABSPATH)
+for abs_path in [DOWNLOAD_ABSPATH, OUTPUT_ABSPATH]:
+    checkExistence(abs_path)
 
-    # Remove previous .zip file if exists
+
+if ONSTART_DOWNLOAD:
     removeFileIfExists(ZIP_ABSPATH)
 
     print(good_msg(f'Descargando {ZIP_LEGACY_NAME}...'))
@@ -101,35 +100,24 @@ if ONSTART_DOWNLOAD:
                                       '--edition', DB_EDITION],
                                      cwd=CURRENT_DIR.joinpath('./geoip2-update'), stderr=STDOUT)
 
-    # Rename .zip if necessary
+    # Rename zip if necessary
     if (ZIP_LEGACY_NAME != ZIP_NAME):
         rename(ZIP_ABSPATH, DOWNLOAD_ABSPATH.joinpath(ZIP_NAME))
 
-    # Check if download was successful
     if (download_output.returncode != 0):
         raise(Exception(bad_msg('Error en la descarga :(')))
+    print(good_msg('Descarga exitosa :)'))
 
-    checkExistence(ZIP_ABSPATH)
-    print(good_msg(f'Descarga exitosa :) -> {ZIP_ABSPATH}'))
-
+checkExistence(ZIP_ABSPATH)
 
 # Convert format
 if ONSTART_CONVERT:
-    # Check if .zip exists
-    checkExistence(ZIP_ABSPATH)
-
-    # Check if output folder exists
-    checkExistence(OUTPUT_ABSPATH)
-
     # python geolite2legacy.py -i GeoLite2-City-CSV.zip -o GeoLiteCity.dat -f geoname2fips.csv
+    downloaded_zip_asbpath = CURRENT_DIR.joinpath(ZIP_LEGACY_NAME)
+    # print(downloaded_zip_asbpath)
     update_output = subprocess.run(['python', 'geolite2legacy.py',
                                     '-i', ZIP_ABSPATH,
                                     '-o', DAT_ABSPATH,
                                     '-f', 'geoname2fips.csv'],
                                    cwd='./geolite2legacy')
-
-    # Check convertion was successful
-    if update_output.returncode != 0:
-        raise(Exception(bad_msg('Error en la conversión de formato :(')))
-    print(good_msg(f'Conversión existosa :) -> {DAT_ABSPATH}'))
 

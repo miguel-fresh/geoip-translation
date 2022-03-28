@@ -85,7 +85,7 @@ ZIP_ABSPATH = DOWNLOAD_ABSPATH.joinpath(ZIP_LEGACY_NAME)
 DAT_ABSPATH = OUTPUT_ABSPATH.joinpath(DAT_NAME)
 
 
-# Download .zip 
+
 if ONSTART_DOWNLOAD:
     # Check if download folder exists
     checkExistence(DOWNLOAD_ABSPATH)
@@ -128,8 +128,4 @@ if ONSTART_CONVERT:
                                     '-f', 'geoname2fips.csv'],
                                    cwd='./geolite2legacy')
 
-    # Check convertion was successful
-    if update_output.returncode != 0:
-        raise(Exception(bad_msg('Error en la conversión de formato :(')))
-    print(good_msg(f'Conversión existosa :) -> {DAT_ABSPATH}'))
 

@@ -107,15 +107,13 @@ class Client
     public function run()
     {
         if (!$this->validate()) {
-            return $this->errors;
+            return;
         }
 
         foreach ($this->editions as $editionId)
             $this->updateEdition($editionId);
-            
-        if (count($this->errorUpdateEditions) > 0) {
-            return $this->errorUpdateEditions;
-        }
+
+        echo count($this->errorUpdateEditions) . "\n";
         return 0;
     }
 
